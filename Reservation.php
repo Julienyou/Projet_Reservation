@@ -9,7 +9,7 @@
     <p> Le prix de la place est de 10 euros jusqu'à 12 ans et ensuite de 15 euros.</p>
     <p> Le prix de l'assurance annulation est de 20 euros quel que soit le nombre de voyageurs.</p>
 	
-    <form method='post' action='index.php?page=detail'>
+    <form method='post' action='index.php?page=controler_detail'>
 		Destination <select name='destination'> </br>
 			<option value="Londres"> Londres </option>
 			<option value="Bruxelles"> Bruxelles </option>
@@ -20,12 +20,12 @@
 		</br>
 		Nombre de places <input type='text' name='nbre_place'> </br>
 		Assurance annulation <input type='checkbox' name='assurance'> </br>
-		<input type='submit' value='Etape suivante'/> <input type='submit' value='Annuler la réservation' action = 'Reservation.php'/> //faire un nouveau form pour le deuxieme bouton
+		<input type='submit' value='Etape suivante'/> 
 	</form>
-		
-		
-
-
-
+	
+	<form method='post' action='index.php?page=Reservation'>
+		<input type='submit' value='Annuler la réservation'/>
+	</form>
+	
 </body>
 </html>
