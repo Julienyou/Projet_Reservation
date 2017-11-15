@@ -41,6 +41,11 @@
 			{
 				$this->_iteration += 1;
 			}
+			
+			public function down_iteration()
+			{
+				$this->_iteration -= 1;
+			}
 		
 			public function get_destination()
 			{

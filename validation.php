@@ -30,5 +30,11 @@
 		<input type='submit' value='Annuler la réservation'/>
 	</form>
 	
+	<!-->
+	Maintenant il faut que quand on appuie sur bouton precedent on retourne au client 1 pour se faire mettre
+	l'iterateur a 1 et mettre comme dans la premiere page des valeurs par defaut donc simplement parcourir la liste deja faite
+	et remplir
+	<!-->
+	
 </body>
 </html>

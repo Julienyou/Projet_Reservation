@@ -15,8 +15,8 @@
 		<input type='submit' value='Etape suivante'/>
 	</form>
 	
-	<form method ='post' action='index.php?page=Reservation'>
-		<input type='submit' value='Retour à la page précédente'/>
+	<form method ='post' action='index.php?page=controler_Reservation'>
+		<input type='submit' name="retour" value='Retour a la page precedente'/>
 	</form>
 	
 	<form method ='post' action='index.php?page=destuction_session'>

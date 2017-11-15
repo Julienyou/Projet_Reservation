@@ -17,7 +17,7 @@
 	{
 		$information->set_assurance("OUI");
 	}
-	else
+	elseif ($iteration == 1)
 	{
 		$information->set_assurance("NON");
 	}
@@ -28,7 +28,6 @@
 	}
 	
 	var_dump($information);
-	$information->get_assurance();
 	
 	
 	if ($iteration <= $nbre_place)
@@ -39,6 +38,7 @@
 	}
 	else
 	{
+		$_SESSION['information'] = serialize($information);
 		include 'controler_validation.php';
 	}
 ?>
