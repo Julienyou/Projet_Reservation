@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="css/Reservation.css" type="text/css" />
 <head>
     <meta charset="UTF-8">
     <title>Reservation</title>
@@ -10,36 +11,36 @@
     <p> Le prix de l'assurance annulation est de 20 euros quel que soit le nombre de voyageurs.</p>
 	
 	<?php $information = unserialize($_SESSION['information']); ?>
-	
-    <form method='post' action='index.php?page=controler_detail'>
-	<?php
-		$destinations = array('Londres','Bruxelles','Amsterdam','Venise');
-		
-		echo "Destination <select name='destination'> </br>";
-		
-			foreach ($destinations as $destination)
-			{
-				if ($destination == $information->get_destination())
+	<div>	
+		<form method='post' action='index.php?page=controler_detail'>
+		<?php
+			$destinations = array('Londres','Bruxelles','Amsterdam','Venise');
+			
+			echo "Destination <select name='destination'> </br>";
+			
+				foreach ($destinations as $destination)
 				{
-					echo '<option value ="'.$destination.'" selected="'.selected.'">'.$destination.'</option>';
+					if ($destination == $information->get_destination())
+					{
+						echo '<option value ="'.$destination.'" selected="'.selected.'">'.$destination.'</option>';
+					}
+					else
+					{
+						echo '<option value="'.$destination.'">'.$destination.'</option>';
+					}
 				}
-				else
-				{
-					echo '<option value="'.$destination.'">'.$destination.'</option>';
-				}
-			}
-	?>
-		</select>
+		?>
+			</select>
+			
+			</br>
+			Nombre de places <input type='text' name='nbre_place' value = '<?php if ($information->get_nbre_place() != null) echo $information->get_nbre_place();?>'> </br>
+			Assurance annulation <input type='checkbox' name='assurance' <?php if ($information->get_assurance() == 'OUI') echo 'checked' ?>> </br>
+			<input type='submit' value='Etape suivante'/> 
+		</form>
 		
-		</br>
-		Nombre de places <input type='text' name='nbre_place' value = '<?php if ($information->get_nbre_place() != null) echo $information->get_nbre_place();?>'> </br>
-		Assurance annulation <input type='checkbox' name='assurance' <?php if ($information->get_assurance() == 'OUI') echo 'checked' ?>> </br>
-		<input type='submit' value='Etape suivante'/> 
-	</form>
-	
-	<form method='post' action='index.php?page=Reservation'>
-		<input type='submit' value='Annuler la réservation'/>
-	</form>
-	
+		<form method='post' action='index.php?page=destruction_session'>
+			<input type='submit' value='Annuler la réservation'/>
+		</form>
+	</div>	
 </body>
 </html>

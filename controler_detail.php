@@ -8,9 +8,7 @@
 		$information->set_nbre_place($_POST['nbre_place']);         ///verifier si int
 	}
 
-	$nbre_place = $information->get_nbre_place();	
-	var_dump ($nbre_place);
-	var_dump($information);
+	$nbre_place = $information->get_nbre_place();
 	
 	///$assurance = $_POST['assurance'];
 	if (isset($_POST['assurance']) && $iteration == 1)
@@ -24,12 +22,9 @@
 	
 	if ($iteration > 1)
 	{
-		$information->set_info_perso([$_POST['nom'],$_POST['prenom'],$_POST['age']]);
+		$information->set_info_perso([$_POST['nom'],$_POST['prenom'],$_POST['age']],$iteration-2);
 	}
-	
-	var_dump($information);
-	
-	
+		
 	if ($iteration <= $nbre_place)
 	{
 		$information->up_iteration();
