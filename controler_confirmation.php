@@ -1,12 +1,12 @@
 <?php
 	$information = unserialize($_SESSION['information']);
 	
-	if ($information->is_major() == "yes")
+	if ($information->is_major() == "no")
 	{
 		include 'validation.php';
 	}
 	else
 	{
-		include 'confirmation.php';
+		include 'controler_db.php';
 	}
 ?>

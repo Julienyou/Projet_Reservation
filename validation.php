@@ -8,17 +8,15 @@
 <body>
     <h1>Validation de la reservation</h1>
     <p> Veuillez confirmer les informations suivantes.</p>
-<div>
 <?php
 	$information = unserialize($_SESSION['information']);
 	
-	if ($information->is_major() == "yes")
+	if ($information->is_major() == "no")
 	{
 		echo '<p id = erreur> Il faut au moins une personne majeure ! <p>';
 	}
-	echo $information->is_major();
-	var_dump($information);
 	
+	echo '<div>';
 	echo '<p>';
 	echo 'Destination           '.$information->get_destination();
 	echo '<br>Nombres de places     '.$information->get_nbre_place();
@@ -37,11 +35,10 @@
 	<form method ='post' action='index.php?page=controler_confirmation'>
 		<input type='submit' value='Confirmer'/>
 	</form>
-
+	
 	<form method ='post' action='index.php?page=controler_Reservation'>
 		<input type='submit' name="retour2" value='Retour a la page precedente'/>
 	</form>
-	
 	
 	<form method='post' action='index.php?page=destruction_session'>
 		<input type='submit' value='Annuler la reservation'/>

@@ -6,6 +6,7 @@
 			private $_nbre_place;
 			private $_assurance;
 			private $_list_info_perso;
+			private $_list_tampon;
 			private $_iteration;
 			private $_montant;
 			
@@ -15,6 +16,7 @@
 				$this->_nbre_place = 0;
 				$this->_assurance = "";
 				$this->_list_info_perso = [];
+				$this->_list_tampon = [];
 				$this->_iteration = 1;
 				$this->_montant = 0;
 			}
@@ -37,6 +39,16 @@
 			public function set_info_perso($list,$iteration)
 			{
 				$this->_list_info_perso[$iteration] = $list;
+			}
+			
+			public function set_list_tampon($valeur,$cle)
+			{
+				$this->_list_tampon[$cle] = $valeur;
+			}
+			
+			public function get_element_tampon()
+			{
+				return $this->_list_tampon;
 			}
 					
 			public function up_iteration()

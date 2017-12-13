@@ -14,6 +14,18 @@
 	
 	<h1>Detail des reservations<br><small>Passager <?php echo $iteration-1 ?></small></h1>
 
+	<?php
+	if ($erreur == "yes")
+	{
+		echo '<p id = erreur> Remplissez tous les champs svp ! <p>';
+	}
+	
+	if ($erreur == "notint")
+	{
+		echo '<p id = erreur> Remplissez le champ "age" par un nombre entier svp ! <p>';
+	}
+	?>
+
 	<div>
 		<form method='post' action='index.php?page=controler_detail'>
 			Nom <input type='text' name='nom' value = '<?php if (isset($info[$iteration-2])) echo $info[$iteration-2][0];?>'> </br>
