@@ -9,6 +9,7 @@
 			private $_list_tampon;
 			private $_iteration;
 			private $_montant;
+			private $_modify;
 			
 			public function __construct()
 			{
@@ -19,6 +20,7 @@
 				$this->_list_tampon = [];
 				$this->_iteration = 1;
 				$this->_montant = 0;
+				$this->_modify = "no"
 			}
 			
 			public function set_destination($destination)
@@ -41,15 +43,25 @@
 				$this->_list_info_perso[$iteration] = $list;
 			}
 			
-			public function set_list_tampon($valeur,$cle)
+			public function set_montant($montant)
 			{
-				$this->_list_tampon[$cle] = $valeur;
+				$this->_montant = $montant;
 			}
 			
-			public function get_element_tampon()
+			public function set_modify()
+			{
+				$this->_modify = 'yes';
+			}
+			
+			/*public function set_list_tampon($valeur,$cle)
+			{
+				$this->_list_tampon[$cle] = $valeur;
+			}*/
+			
+			/*public function get_element_tampon()
 			{
 				return $this->_list_tampon;
-			}
+			}*/
 					
 			public function up_iteration()
 			{
@@ -91,8 +103,14 @@
 				return $this->_iteration;
 			}
 			
+			public function get_modify()
+			{
+				return $this->_modify;
+			}
+			
 			public function get_montant()
 			{
+				$this->_montant = 0;
 				foreach ($this->_list_info_perso as $info)
 				{
 					if ($info[2] <= 12)

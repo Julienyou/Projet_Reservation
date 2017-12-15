@@ -13,35 +13,7 @@
 		<input type='submit' value='Ajouter une reservation'/>
 	</form>
 	
-	<table id = "customers">
-		<tr>
-			<th> Id	</th>
-			<th> Destination </th>
-			<th> Assurance </th>
-			<th> Total </th>
-			<th> Nom - Age </th>
-			<th> Editer </th>
-			<th> Supprimer </th>
-		</tr>
-		<tr>
-			<td> 1	</td>
-			<td> Venise </td>
-			<td> OUI </td>
-			<td> 45 </td>
-			<td> Beard Julien - 20 <br> Merel Ludovic - 3 </td>
-			<td> Editer </td>
-			<td> Supprimer </td>
-		</tr>
-		<tr>
-			<td> 1	</td>
-			<td> Amsterdam </td>
-			<td> NON </td>
-			<td> 45 </td>
-			<td> Beard Julien - 20 <br> Merel Ludovic - 3 </td>
-			<td> Editer </td>
-			<td> Supprimer </td>
-		</tr>
-		
-	</table>
+	<?php echo $display; ?>
+	
 	</div>
 </body>
