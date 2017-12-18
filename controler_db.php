@@ -37,7 +37,42 @@ if ($information->get_modify() == "no")
 			}
 		}
 }
-///else  --> partie pour modifier
+else
+{
+	
+	$sql = "UPDATE travel 
+			SET Destination='".$information->get_destination()."', 
+				Assurance='".$information->get_assurance()."', 
+				Nbre_place='".$information->get_Nbre_place()."',
+				Total='".$information->get_montant()."'
+			WHERE id=".$information->get_ID_vol()."";
+
+	if ($mysqli->query($sql) === TRUE) {
+		echo "New record created successfully";
+	} else {
+		echo "Error: " . $sql . "<br>" . $mysqli->error;
+	}
+
+	foreach($information->get_info_perso() as $info)
+		{
+			$ID = $information->get_ID();
+
+			$sql2 = "UPDATE client 
+				SET Lastname='".$info[0]."', 
+					Firstname='".$info[1]."', 
+					Age='".$info[2]."' 
+				WHERE ID =".$ID."";
+
+			$information->set_ID($ID + 1);
+
+			if ($mysqli->query($sql2) === TRUE) {
+				echo "New record created successfully";
+			} else {
+				echo "Error: " . $sql2 . "<br>" . $mysqli->error;
+			}
+		}
+	
+}
 
 
 

@@ -19,6 +19,7 @@
 	$information = new Information();	
 	
 	$ID = $_POST['ID'];
+	$ID_client = $_POST['ID_client'];
 	
 	$query = "SELECT travel.ID, travel.Destination, travel.Assurance, travel.Total,
 			  travel.Nbre_place, client.Lastname, client.Firstname, client.Age FROM travel 
@@ -30,7 +31,7 @@
 	}
 	catch (Exception $e) 
 	{
-		echo 'Exception reçue : ',  $e->getMessage(), "\n";
+		echo 'Exception recue : ',  $e->getMessage(), "\n";
 	}
 		
 		
@@ -40,15 +41,16 @@
 	{
 		$information->set_info_perso([$line["Lastname"],$line["Firstname"],$line["Age"]],$iteration);
 		$iteration += 1;
-		var_dump ($line);
+		$information->reset_iteration();
 		$information->set_destination($line['Destination']);
 		$information->set_assurance($line['Assurance']);
 		$information->set_nbre_place($line['Nbre_place']);
 		$information->set_montant($line['Total']);
 		$information->set_modify();
+		$information->set_ID($ID_client);
+		$information->set_ID_vol($ID);
+		
 	}
-	
-	var_dump ($information);
 
 	$_SESSION['information'] = serialize($information);
 	include 'Reservation.php'

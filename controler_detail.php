@@ -17,13 +17,12 @@
 		}
 		else
 		{
-			$information->set_nbre_place($_POST['nbre_place']);         ///verifier si int
+			$information->set_nbre_place($_POST['nbre_place']);
 		}
 	}
 	
 	$nbre_place = $information->get_nbre_place();
-	
-	///$assurance = $_POST['assurance'];
+
 	if (isset($_POST['assurance']) && $iteration == 1)
 	{
 		$information->set_assurance("OUI");

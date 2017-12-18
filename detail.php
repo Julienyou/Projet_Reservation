@@ -10,7 +10,6 @@
 	$information = unserialize($_SESSION['information']);
 	$info = $information->get_info_perso();
 	$iteration = $information->get_iteration();
-	var_dump($information);
 	?>
 	
 	<h1>Detail des reservations<br><small>Passager <?php echo $iteration-1 ?></small></h1>

@@ -15,7 +15,7 @@
 		<p> Merci de bien vouloir verser la somme de <?php echo $information->get_montant() ?>&euro; sur le compte 000 - 000000 - 00 </p>
 
 		<form method='post' action='index.php?page=destruction_session'>
-			<input type='submit' value='Annuler la reservation'/>
+			<input type='submit' value="Retour à la page d'acceuil"/>
 		</form>
 	</div>
 </body>

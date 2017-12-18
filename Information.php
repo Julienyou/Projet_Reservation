@@ -10,6 +10,9 @@
 			private $_iteration;
 			private $_montant;
 			private $_modify;
+			private $_ID;
+			private $_ID_vol;
+
 			
 			public function __construct()
 			{
@@ -17,10 +20,11 @@
 				$this->_nbre_place = 0;
 				$this->_assurance = "";
 				$this->_list_info_perso = [];
-				$this->_list_tampon = [];
 				$this->_iteration = 1;
 				$this->_montant = 0;
-				$this->_modify = "no"
+				$this->_modify = "no";
+				$this->_ID = 0;
+				$this->_ID_vol = 0;
 			}
 			
 			public function set_destination($destination)
@@ -50,7 +54,17 @@
 			
 			public function set_modify()
 			{
-				$this->_modify = 'yes';
+				$this->_modify = "yes";
+			}
+
+			public function set_ID($id)
+			{
+				$this->_ID = $id;
+			}
+
+			public function set_ID_vol($id_vol)
+			{
+				$this->_ID_vol = $id_vol;
 			}
 			
 			/*public function set_list_tampon($valeur,$cle)
@@ -107,6 +121,16 @@
 			{
 				return $this->_modify;
 			}
+
+			public function get_ID()
+			{
+				return $this->_ID;
+			}
+
+			public function get_ID_vol()
+			{
+				return $this->_ID_vol;
+			}
 			
 			public function get_montant()
 			{
@@ -121,6 +145,11 @@
 					{
 						$this->_montant += 15;
 					}
+				}
+
+				if ($this->_assurance == "OUI")
+				{
+					$this->_montant += 20;
 				}
 				return $this->_montant;
 			}
