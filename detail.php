@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="css/detail.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 <head>
     <meta charset="UTF-8">
     <title>Detail des reservation</title>
@@ -15,6 +15,9 @@
 	<h1>Detail des reservations<br><small>Passager <?php echo $iteration-1 ?></small></h1>
 
 	<?php
+
+	/*Check if the next controller "controler_detail" 
+	  has generated an error and display the error message*/
 	if ($erreur == "yes")
 	{
 		echo '<p id = erreur> Remplissez tous les champs svp ! <p>';
@@ -22,7 +25,7 @@
 	
 	if ($erreur == "notint")
 	{
-		echo '<p id = erreur> Remplissez le champ "age" par un nombre entier svp ! <p>';
+		echo '<p id = erreur> Remplissez le champ "age" par un nombre entier compris entre 0 et 120 svp ! <p>';
 	}
 	?>
 

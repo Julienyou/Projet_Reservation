@@ -1,12 +1,14 @@
 <?php
+
+//Unset destroys the session object information
 if (isset($_SESSION['information']))
 {
 	unset($_SESSION['information']);
 }
-//unset($_SESSION['information']);
-// On détruit la session
+
+//Destroy the session
 session_destroy();
  
-// On redirige le visiteur vers la page d'accueil
+//We redirect the client to the home page
 header('location:index.php');
 ?>

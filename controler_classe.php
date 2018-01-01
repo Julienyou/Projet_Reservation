@@ -16,11 +16,13 @@
 		die("Connection failed: " . $mysqli->connect_error);
 	}
 	
+	//Create a new object to put informations of clients and travel
 	$information = new Information();	
 	
 	$ID = $_POST['ID'];
 	$ID_client = $_POST['ID_client'];
 	
+	//Recovering informations from the database in a board
 	$query = "SELECT travel.ID, travel.Destination, travel.Assurance, travel.Total,
 			  travel.Nbre_place, client.Lastname, client.Firstname, client.Age FROM travel 
 			  INNER JOIN client ON client.rel_travel = travel.ID && client.rel_travel = ".$ID;
@@ -37,7 +39,8 @@
 		
 	$iteration = 0;
 	
-	while ($line = $result->fetch_assoc()) //valeurs par ligne
+	//Treatment informations line by line and filling of my object
+	while ($line = $result->fetch_assoc())
 	{
 		$information->set_info_perso([$line["Lastname"],$line["Firstname"],$line["Age"]],$iteration);
 		$iteration += 1;
@@ -49,7 +52,6 @@
 		$information->set_modify();
 		$information->set_ID($ID_client);
 		$information->set_ID_vol($ID);
-		
 	}
 
 	$_SESSION['information'] = serialize($information);

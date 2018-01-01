@@ -38,3 +38,7 @@ div {
     background-color: #e2d1cf;
     padding: 20px;
 }
+
+td {
+    padding-left: 20px;
+}

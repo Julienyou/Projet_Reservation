@@ -13,25 +13,26 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
 
+//Check if we must add informations to the database or we must modify informations in the database
 if ($information->get_modify() == "no")
 {
+	//Adding informations about the travel
 	$sql2 = "INSERT INTO travel (Destination, Assurance, Nbre_place, Total)
 			VALUES ('".$information->get_destination()."', '".$information->get_assurance()."', '".$information->get_Nbre_place()."', '".$information->get_montant()."')";
 			
 			if ($mysqli->query($sql2) === TRUE) {
-				echo "New record created successfully";
 				$id_insert = $mysqli->insert_id;
 			} else {
 				echo "Error: " . $sql2 . "<br>" . $mysqli->error;
 			}
-
+	
+	//Adding informations about each traveller
 	foreach($information->get_info_perso() as $info)
 		{
 			$sql = "INSERT INTO client (Lastname, Firstname, Age, rel_travel)
 					VALUES ('".$info[0]."', '".$info[1]."', '".$info[2]."', '".$id_insert."')";
 
 			if ($mysqli->query($sql) === TRUE) {
-				echo "New record created successfully";
 			} else {
 				echo "Error: " . $sql . "<br>" . $mysqli->error;
 			}
@@ -40,6 +41,7 @@ if ($information->get_modify() == "no")
 else
 {
 	
+	//Modification of informations about the travel
 	$sql = "UPDATE travel 
 			SET Destination='".$information->get_destination()."', 
 				Assurance='".$information->get_assurance()."', 
@@ -48,11 +50,11 @@ else
 			WHERE id=".$information->get_ID_vol()."";
 
 	if ($mysqli->query($sql) === TRUE) {
-		echo "New record created successfully";
 	} else {
 		echo "Error: " . $sql . "<br>" . $mysqli->error;
 	}
 
+	//Modification of informations about the traveller
 	foreach($information->get_info_perso() as $info)
 		{
 			$ID = $information->get_ID();
@@ -66,7 +68,6 @@ else
 			$information->set_ID($ID + 1);
 
 			if ($mysqli->query($sql2) === TRUE) {
-				echo "New record created successfully";
 			} else {
 				echo "Error: " . $sql2 . "<br>" . $mysqli->error;
 			}

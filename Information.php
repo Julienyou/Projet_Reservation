@@ -6,7 +6,6 @@
 			private $_nbre_place;
 			private $_assurance;
 			private $_list_info_perso;
-			private $_list_tampon;
 			private $_iteration;
 			private $_montant;
 			private $_modify;
@@ -19,7 +18,6 @@
 				$this->_destination = "";
 				$this->_nbre_place = 0;
 				$this->_assurance = "";
-				$this->_list_info_perso = [];
 				$this->_iteration = 1;
 				$this->_montant = 0;
 				$this->_modify = "no";
@@ -27,6 +25,8 @@
 				$this->_ID_vol = 0;
 			}
 			
+			/*Setter : Allows to modify values of the object*/
+
 			public function set_destination($destination)
 			{
 				$this->_destination = $destination;
@@ -66,32 +66,19 @@
 			{
 				$this->_ID_vol = $id_vol;
 			}
-			
-			/*public function set_list_tampon($valeur,$cle)
-			{
-				$this->_list_tampon[$cle] = $valeur;
-			}*/
-			
-			/*public function get_element_tampon()
-			{
-				return $this->_list_tampon;
-			}*/
 					
 			public function up_iteration()
 			{
 				$this->_iteration += 1;
 			}
 			
-			//public function down_iteration()
-			//{
-			//	$this->_iteration -= 1;
-			//}
-			
 			public function reset_iteration()
 			{
 				$this->_iteration = 1;
 			}
-		
+			
+			/*Getter : Allows to get values of the object*/
+
 			public function get_destination()
 			{
 				return $this->_destination;

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="css/validation.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 <head>
     <meta charset="UTF-8">
     <title>Validation de la reservation</title>
@@ -11,25 +11,27 @@
 <?php
 	$information = unserialize($_SESSION['information']);
 	
+	//If there isn't one major traveller, we generate one error
 	if ($information->is_major() == "no")
 	{
 		echo '<p id = erreur> Il faut au moins une personne majeure ! <p>';
 	}
+
+	/*Display all the informations*/
 	
 	echo '<div>';
-	echo '<p>';
-	echo 'Destination           '.$information->get_destination();
-	echo '<br>Nombres de places     '.$information->get_nbre_place();
+	echo '<table><tr><td>Destination</td><td>	'.$information->get_destination().'</td></tr>';
+	echo '<tr><td>Nombres de places</td><td>	'.$information->get_nbre_place().'</td></tr>';
 	
 	foreach($information->get_info_perso() as $info)
 	{
-		echo '<p>';
-		echo 'Nom               '.$info[0].' '.$info[1];
-		echo '<br>Age               '.$info[2];
+		echo '<tr><td></td><td></td></tr>';
+		echo '<tr><td>Nom</td><td>	'.$info[0].' '.$info[1].'</td></tr>';
+		echo '<tr><td>Age</td><td>	'.$info[2].'</td></tr>';
 	}
 	
-	echo '<p>';
-	echo 'Assurance annulation       '.$information->get_assurance();
+	echo '<tr><td></td><td></td></tr>';
+	echo '<tr><td>Assurance annulation</td><td>	'.$information->get_assurance().'</td></tr></table>';
 ?>
 
 	<form method ='post' action='index.php?page=controler_confirmation'>

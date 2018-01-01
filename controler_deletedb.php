@@ -15,7 +15,9 @@
     
     $ID = $_POST['ID'];
 
-	// sql to delete a record
+    /*Request to delete the travel line with the good ID
+      Travellers are automatically deleted too because of
+      a cascade link between table in the database*/
     $sql = "DELETE FROM travel WHERE ID=".$ID."";
 
     if ($mysqli->query($sql) === TRUE) 

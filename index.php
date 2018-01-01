@@ -1,13 +1,19 @@
-<?php																				/// include permet d'avoir encore acces aux variables de post donc si on include le controller on peut faire le $_SESSION
+<?php
+	//Start a session
 	session_start();
-	require_once("Information.php");											    ///require_once permet de l'appeller qu'une fois pour toute la session
+
+	/*Import the file for creating an objet which will contain
+	  all informations about the travel and travellers*/
+	require_once("Information.php");
 	
 	$erreur = "no";
 	
+	//Redirection to the page specified in the url
 	if (!empty($_GET["page"]) && is_file($_GET["page"].".php"))
 	{
 		include $_GET["page"].".php";
 	}	
+	//If nothing is specified, redirection to the controler of the home page
 	else
 	{
 		$information = new Information();

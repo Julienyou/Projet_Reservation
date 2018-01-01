@@ -15,18 +15,18 @@
 	
 	$display = "";
 	
-	// Exécuter des requêtes SQL
+	//Recovering informations from the database in a board
 	$query = "SELECT travel.ID, travel.Destination, travel.Assurance, travel.Total, client.Lastname, client.Firstname, client.Age, client.ID as client_id FROM travel INNER JOIN client ON client.rel_travel = travel.ID";
 	$result = $mysqli->query($query) or die("Query failed ");
 	
+	//Case there is nothing in the database
 	if ($result->num_rows == 0) 
 	{
-		$display .= "Aucune ligne trouvée, rien à afficher.";
+		$display .= "Aucune ligne trouvee, rien a afficher.";
 		exit;
 	}
 	
-	// Affichage des entêtes de colonnes
-	
+	//Display columns headers
 	$display .=  "<table id='customers'><tr>";
 	$display .=  '<th> ID </th>';
 	$display .=  '<th> Destination </th>';
@@ -39,11 +39,13 @@
 	$display .=  '<th> Supprimer </th>';
 	$display .=  "</tr>";
 	
-	// Afficher des résultats en HTML
 	$actualID = -1;
 	
-	while ($line = $result->fetch_assoc()) //valeurs par ligne
-	{ 
+	//Display each line of the database
+	while ($line = $result->fetch_assoc())
+	{
+		/*If the ID exists already in the table,
+		  we display only the lastname, firstname, age*/
 		if ($line['ID'] == $actualID)
 		{	
 			$display .=  "\t<tr>\n";
@@ -54,10 +56,11 @@
 			$display .=  "\t\t<td></td>\n";
 			$display .=  "\t\t<td></td>\n";		
 		}
+		/*If it's a new ID, we display all informations about the
+		  travel and the traveller and add a modify and a delete button*/
 		else if ($line['ID'] != $actualID)
 		{
 			$display .=  "\t<tr >\n";
-			//recupere chaque valeur de la ligne
 			$display .=  "\t\t<td>".$line["ID"]."</td>\n";
 			$display .=  "\t\t<td>".$line["Destination"]."</td>\n";
 			$display .=  "\t\t<td>".$line["Assurance"]."</td>\n";

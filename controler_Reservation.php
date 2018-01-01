@@ -1,8 +1,9 @@
 <?php
+	/*Check which "Return to the previous page" the client asks*/
+
 	if (isset($_POST['retour']) && $_POST['retour'] == "Retour a la page precedente")
 	{
 		$information = unserialize($_SESSION['information']);
-		//$information->down_iteration();
 		$information->reset_iteration();
 		$_SESSION['information'] = serialize($information);
 		include 'Reservation.php';
